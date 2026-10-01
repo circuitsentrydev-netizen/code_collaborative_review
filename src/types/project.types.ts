@@ -3,6 +3,7 @@ export interface Project {
     name: string;
     description: string | null;
     created_at?: Date;
+    members: []
 }
 
 export interface CreateProjectBody {
