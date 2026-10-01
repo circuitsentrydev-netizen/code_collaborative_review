@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    
+     "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "esnext",
+    "types": [],
+    
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+  
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": false,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    },
+  "include": ["src/**/*"],
+  "files": ["src/types/express.d.ts"]
+}
