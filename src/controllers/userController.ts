@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { query } from '../config/database';
 import bcrypt from 'bcryptjs';
-
+import { loginUser } from './authcontroller';
 
 // 4. Register a New User
 export const registerUser = async (req: Request, res: Response) => {
