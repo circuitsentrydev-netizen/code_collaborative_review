@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { registerUser, loginUser } from '../controllers/authcontroller';
+import { registerUser, loginUser} from '../controllers/authcontroller';
 import { getUserProfile, updateUserProfile, deleteUserProfile } from '../controllers/userController';
-import { protect } from '../middleware/authMiddleware'; // Updated to match your new export name
+import { protect } from '../middleware/authMiddleware'; 
 
 const userRouter = Router();
 
