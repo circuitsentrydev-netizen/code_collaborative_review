@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import { projectService} from'../service/projectService';
-
+import { projectService } from '../service/projectService';
 import { CreateProjectBody, AssignMemberBody } from '../types/project.types';
 
 // 1. Create a Project
@@ -29,6 +28,7 @@ export const listProjects = async (req: Request, res: Response) => {
     }
 };
 
+// 3. Assign Reviewer to Project
 export const assignMember = async (req: Request<{ id: string }, {}, AssignMemberBody>, res: Response) => {
     const projectId = parseInt(req.params.id, 10);
     const { userId } = req.body;
@@ -41,6 +41,9 @@ export const assignMember = async (req: Request<{ id: string }, {}, AssignMember
         await projectService.assignUser(projectId, userId);
         return res.status(200).json({ message: "Reviewer assigned successfully" });
     } catch (error: any) {
+        if (error.message === "ProjectNotFound") {
+            return res.status(404).json({ message: "Project not found" });
+        }
         if (error.message === "UserNotFound") {
             return res.status(404).json({ message: "User not found" });
         }
@@ -50,9 +53,6 @@ export const assignMember = async (req: Request<{ id: string }, {}, AssignMember
         return res.status(500).json({ message: "Error assigning member" });
     }
 };
-
-
-
 
 // 4. Remove User from Project
 export const removeMember = async (req: Request<{ id: string; userId: string }>, res: Response) => {
